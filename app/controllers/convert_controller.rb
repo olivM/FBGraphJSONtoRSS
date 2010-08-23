@@ -8,7 +8,7 @@ class ConvertController < ApplicationController
   def feed
 
     @q = params[:q]
-    @feed_url = "http://localhost/convert/feed/?q=#{@q}"
+    @feed_url = "http://fbgraphjsontorss.heroku.com/convert/feed/?q=#{@q}"
 
     @data = Rails.cache.read(@q)
     
