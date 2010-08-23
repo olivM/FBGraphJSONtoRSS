@@ -5,7 +5,16 @@ gem 'rails', '3.0.0.rc'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
+
+group :production do
+  gem "memcache-client"
+  gem 'memcached-northscale', :require => 'memcached'
+end
+
+gem 'httparty'
 
 # Use unicorn as the web server
 # gem 'unicorn'

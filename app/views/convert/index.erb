@@ -1,0 +1,8 @@
+<% form_tag(:controller => "convert", :action => "preview", :method => "get") do %>
+	
+	<%= label_tag(:q, "Url to Convert:") %>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Preview") %>	
+	<%
+end
+%>
