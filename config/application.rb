@@ -7,6 +7,13 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
 
+require 'active_support/builder' unless defined?(Builder)
+
+
+FB_APP_ID = '120184558033325'
+FB_APP_SECRET = '352da7c619f11c81a24836dc0763fd89'
+
+
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)

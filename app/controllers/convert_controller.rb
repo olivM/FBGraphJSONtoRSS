@@ -5,38 +5,23 @@ class ConvertController < ApplicationController
     
   end
 
-  def preview
+  def feed
 
     @q = params[:q]
+    @feed_url = "http://localhost/convert/feed/?q=#{@q}"
 
     @data = Rails.cache.read(@q)
     
-    logger.info params.inspect
-
-    logger.info @data.inspect
-    
     if @data.nil?
 
-      response = HTTParty.get(@q)
+      fg_client = FGraph::Client.new(:client_id => FB_APP_ID, :client_secret => FB_APP_SECRET)
+      @data = fg_client.search(@q) # , :type => 'status'
       
-      logger.info response.inspect
-      
-      Rails.cache.write(@q, response.body)
-
-      @converted = response.body
+  #    Rails.cache.write(@q, @data, :expires_in => 60.minutes)
 
     end
-
     
+
   end
-
-  def feed
-
-    @counter = Rails.cache.read(params[:q])
-    @counter = @counter ? @counter + 1 : 1
-    Rails.cache.write(params[:q], @counter)
-    
-  end
-
 
 end
