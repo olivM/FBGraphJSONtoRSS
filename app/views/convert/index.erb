@@ -1,4 +1,4 @@
-<% form_tag(:controller => "convert", :action => "feed", :method => "get") do %>
+<% form_tag('/convert/feed', :method => :get) do %>
 	
 	<%= label_tag(:q, "Url to Convert:") %>
 	<%= text_field_tag(:q) %>
